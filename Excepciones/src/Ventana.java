@@ -53,36 +53,43 @@ public class Ventana implements ActionListener{
 	@Override
     public void actionPerformed(ActionEvent e) {
         
-        
-        if (e.getSource().equals(FirstButton)){
-			if(comprobacion==15){
-				comprobacion+= 20;
-								 
+        try{
+			if (e.getSource().equals(FirstButton)){
+				if(comprobacion==15){
+					comprobacion+= 20;
+									 
+				}
+				else{				
+						JOptionPane.showMessageDialog(ventana, "Te equivocaste de orden, empieza de nuevo");
+						comprobacion=0;
+						throw new Exception("Metiste la pata");
+					}
 			}
-			else{				
+			if (e.getSource().equals(SecondButton)){
+				if(comprobacion==35){
+					JOptionPane.showMessageDialog(ventana, "Felicidades, lo lograste!");
+					comprobacion=0;		
+				}
+				else{					
 					JOptionPane.showMessageDialog(ventana, "Te equivocaste de orden, empieza de nuevo");
 					comprobacion=0;
-				}
-        }
-        if (e.getSource().equals(SecondButton)){
-			if(comprobacion==35){
-				JOptionPane.showMessageDialog(ventana, "Felicidades, lo lograste!");
-				comprobacion=0;		
+					throw new Exception("Metiste la pata");
+					}
 			}
-			else{
-				JOptionPane.showMessageDialog(ventana, "Te equivocaste de orden, empieza de nuevo");
-				comprobacion=0;
+			if (e.getSource().equals(ThirdButton)){
+				if(comprobacion==0){
+					comprobacion+=15; 
 				}
-        }
-        if (e.getSource().equals(ThirdButton)){
-			if(comprobacion==0){
-				comprobacion+=15; 
-			}
-			else{
-				JOptionPane.showMessageDialog(ventana, "Te equivocaste de orden, empieza de nuevo");
-				comprobacion=0;
+				else{					
+					JOptionPane.showMessageDialog(ventana, "Te equivocaste de orden, empieza de nuevo");
+					comprobacion=0;
+					throw new Exception("Metiste la pata");
+					}
 				}
-			}
+		}
+		catch(Exception error){
+			System.out.println(error);
+		}		      
     }
 
 
